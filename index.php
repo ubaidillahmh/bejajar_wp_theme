@@ -22,6 +22,8 @@
         </ul>
     </nav>
 
+    <?php include('member.php'); ?>
+    
 </div><!-- /.blog-main -->
 
 <?php get_sidebar(); ?>

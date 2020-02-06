@@ -3,7 +3,10 @@
 </div><!-- /.container -->
 
 <footer class="blog-footer">
-    <?php if ( is_active_sidebar( 'footer-copyright-text' ) ) { dynamic_sidebar( 'footer-copyright-text' ); } ?>
+    <?php wp_nav_menu(array(
+        'theme_location' => 'footer-menu',
+        'menu_class'    => 'list-inline',
+    )); ?>
 </footer>
 <?php wp_footer(); ?>
 </body>

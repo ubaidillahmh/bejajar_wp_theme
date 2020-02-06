@@ -25,16 +25,22 @@ function bootstraptheme_register_menu() {
 }
 add_action( 'init', 'bootstraptheme_register_menu' );
 
+function bootstraptheme_register_footer()
+{
+    register_nav_menu('footer-menu', __('Footer Menu'));
+}
+add_action('init', 'bootstraptheme_register_footer');
+
 function bootstraptheme_widgets_init() {
 
-    register_sidebar( array(
-        'name'          => 'Footer - Copyright Text',
-        'id'            => 'footer-copyright-text',
-        'before_widget' => '<div class="footer_copyright_text">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
+    // register_sidebar( array(
+    //     'name'          => 'Footer - Copyright Text',
+    //     'id'            => 'footer-copyright-text',
+    //     'before_widget' => '<div class="footer_copyright_text">',
+    //     'after_widget'  => '</div>',
+    //     'before_title'  => '<h4>',
+    //     'after_title'   => '</h4>',
+    // ) );
     
     register_sidebar( array(
         'name'          => 'Sidebar - Inset',
