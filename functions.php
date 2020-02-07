@@ -22,14 +22,15 @@ add_action( 'after_setup_theme', 'bootstraptheme_wp_setup' );
 
 function bootstraptheme_register_menu() {
     register_nav_menu('header-menu', __( 'Header Menu' ));
+    register_nav_menu('footer-menu', __('Footer Menu'));
 }
 add_action( 'init', 'bootstraptheme_register_menu' );
 
-function bootstraptheme_register_footer()
-{
-    register_nav_menu('footer-menu', __('Footer Menu'));
-}
-add_action('init', 'bootstraptheme_register_footer');
+// function bootstraptheme_register_footer()
+// {
+//     register_nav_menu('footer-menu', __('Footer Menu'));
+// }
+// add_action('init', 'bootstraptheme_register_footer');
 
 function bootstraptheme_widgets_init() {
 

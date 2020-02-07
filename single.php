@@ -1,37 +1,37 @@
-<?php /* Template Name: Team Member Template */ ?>
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package Testing
+ */
 
-<?php get_header(); ?>
-<div class="col-sm-8 blog-main">
-    <?php
-        $args = array('post_type' => 'team_members');
-        $query = new WP_Query($args);
-        // var_dump(json_encode($query));
-        $i = 1;
-        while ( $query->have_posts() ) : $query->the_post();
-        $id         = $query->post->ID;
-        $position   = get_post_meta($id, 'member_position', true);
-        $email      = get_post_meta($id, 'member_email', true);
-        $website    = get_post_meta($id, 'member_website', true); 
-        $image      = get_post_meta($id, 'member_image', true);
-        // var_dump($position);die;
-    ?>
-    <div class="grid-item">
-        <?php if($image != null) 
-        {
-        ?>
-            <p><img href="<?php echo $image; ?>" alt="Photo Profile"/></p>
-        <?php 
-        }
-        ?>
-        <p><?php echo the_title(); ?></p>
-        <p><?php echo $position; ?></p>
-        <p><?php echo $email ?></p>
-        <p><?php echo $website ?></p>
-    </div>
-    <?php endwhile; ?>
-    
-</div>
+get_header();
+?>
 
-<?php get_sidebar(); ?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-<?php get_footer(); ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', get_post_type() );
+
+			the_post_navigation();
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<?php
+get_sidebar();
+get_footer();
