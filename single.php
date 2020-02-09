@@ -12,24 +12,25 @@ get_header();
 
     <div class="col-sm-8 blog-main">
 
+		<?php 
+		if ( have_posts() ) { 
+			while ( have_posts() ) : the_post();
+		?>
+		<div class="blog-post">
+			<h2 class="blog-post-title"><?php the_title(); ?></h2>
+			<p class="blog-post-meta"><?php the_date(); ?> by <?php the_author(); ?></p>
+			<?php the_content(); ?>
+		</div><!-- /.blog-post -->
 		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', get_post_type() );
-
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
-
-		endwhile; // End of the loop.
+			endwhile;
+		} 
 		?>
 
 	</div><!-- #primary -->
-
+	
 <?php
 get_sidebar();
 get_footer();
