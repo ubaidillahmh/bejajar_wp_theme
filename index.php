@@ -21,8 +21,6 @@
             <li><?php previous_posts_link('Next'); ?></li>
         </ul>
     </nav>
-
-    <?php include('member.php'); ?>
     
 </div><!-- /.blog-main -->
 
